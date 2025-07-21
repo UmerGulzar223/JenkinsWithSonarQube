@@ -1,9 +1,8 @@
 pipeline {
     agent any
 
-    tools {
-        // Use Jenkins-installed SonarScanner here
-        sonarRunner 'SonarScanner' // sonarRunner is the correct keyword
+    environment {
+        PATH = "/opt/sonar-scanner/bin:$PATH"
     }
 
     stages {
@@ -15,8 +14,8 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('Sonar') {
-                    sh 'sonar-scanner'
+                withSonarQubeEnv('SonarQube') {
+                    sh 'sonar-scanner -Dsonar.projectKey=jenkins-sonar-project -Dsonar.sources=.'
                 }
             }
         }
