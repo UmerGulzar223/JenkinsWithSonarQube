@@ -5,7 +5,7 @@ def main():
     print("Hello " + name)
 
     # Bad practice: unused variable
-    unused_var = 5
+    unused_var = 10
 
     result = utils.square(3)
     print("Square of 3 is:", result)
